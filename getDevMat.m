@@ -3,7 +3,7 @@ function [ DevMat ] = getDevMat( GroupList )
 %of coefficient.
 %GroupList should be entered as [2 3 3] for the group Z2xZ3xZ3
 
-    if size(GroupList,2)==1
+    if size(GroupList,2)==1  %cyclic group requested.  Simple
         %cyclic
         N=GroupList(1);
         coeffs=1:N;
@@ -15,7 +15,7 @@ function [ DevMat ] = getDevMat( GroupList )
             end
         end
         
-    else
+    else %abelian, non-cyclic group requested.
         %Enter the group.  Each size spaced.  Ex:  Z2 x Z5 x Z10 = [2 5 10]
         NumGroups = size(GroupList,2);
         NumElements = prod(GroupList);
