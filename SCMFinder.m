@@ -5,20 +5,17 @@ function [ SEQs ] = SCMFinder( N, cores )
 %cores defines the number of cores to be used for the searhc
 
     parpool(cores);
-    
-<<<<<<< HEAD
+
     numWorkers=matlabpool('size')
     [streams{1:numWorkers}]= RandStream.create('mrg32k3a','Seed','shuffle','NumStreams',numWorkers)
-=======
+
     coeffs=getDevMat(N); %get the developed matrix
 
     %in case N is not already just a number, turn it into the number of
     %elements it should correspond to:
     N = prod(N);
->>>>>>> refs/remotes/origin/master
     
     spmd  %do each run on a separate thread
-                format short; format compact;
         RandStream.setGlobalStream(streams{labindex});
 
         coeffs=getDevMat(N); %get the developed matrix
