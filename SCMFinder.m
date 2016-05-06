@@ -10,7 +10,7 @@ function [ SEQs ] = SCMFinder( N, cores )
     [streams{1:numWorkers}]= RandStream.create('mrg32k3a','Seed','shuffle','NumStreams',numWorkers)
     
     spmd  %do each run on a separate thread
-                
+                format short; format compact;
         RandStream.setGlobalStream(streams{labindex});
 
         coeffs=getDevMat(N); %get the developed matrix
