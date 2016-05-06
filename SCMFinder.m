@@ -28,7 +28,8 @@ function [ SEQs ] = SCMFinder( N )
 
             if max(abs(Prod(2:end))) <= 2  %if off diagonal entries are [+-2]
                 %found one!
-                disp(Wtemp)
+                disp(Wtemp)  %show the sequence
+                disp(Prod)  %Show the correlation
                 found=1;
             end
         end
