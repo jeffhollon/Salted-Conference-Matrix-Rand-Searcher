@@ -9,7 +9,7 @@ function [ SEQs ] = SCMFinder( N )
 
     %in case N is not already just a number, turn it into the number of
     %elements it should correspond to:
-    N = prod(N);
+    N = sum(N);
     
     trial=0;      
     found=0;
