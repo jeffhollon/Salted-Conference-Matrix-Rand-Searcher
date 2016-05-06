@@ -48,6 +48,7 @@ function [ DevMat ] = getDevMat( GroupList )
         end 
 
         %Find inverse entries
+        Inverses=zeros(1,NumElements);
         for a=1:NumElements
             for b=1:NumElements
 
@@ -72,7 +73,7 @@ function [ DevMat ] = getDevMat( GroupList )
         Coeffs=zeros(NumElements);
         Coeffs(1,:)=coeffs;
 
-        for a=2:NumElements
+        parfor a=2:NumElements
             for b=1:NumElements
 
                 E = Elements(:,b) + Elements(:,Inverses(a) );
@@ -90,6 +91,14 @@ function [ DevMat ] = getDevMat( GroupList )
                         break
                     end
                 end
+%                 
+%                 %find where Elements(:,c) = E
+%                 Loc = find(Elements(1,:)==E(1));
+%                 for z=2:size(E,1)  %for each coordinate in E
+%                     Loc = intersect( Loc, find(Elements(z,:)==E(z)) );
+%                 end
+%                 Loc=Loc(1);
+                
                 Coeffs(a,b)=coeffs(Loc);
 
             end
