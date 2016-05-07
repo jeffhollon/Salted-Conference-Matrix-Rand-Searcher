@@ -13,8 +13,6 @@ function [ SEQs ] = SCMFinder( N, cores, timing)
     numWorkers=matlabpool('size')
     [streams{1:numWorkers}]= RandStream.create('mrg32k3a','Seed','shuffle','NumStreams',numWorkers)
 
-    coeffs=getDevMat(N); %get the developed matrix
-
     %in case N is not already just a number, turn it into the number of
     %elements it should correspond to:
     N = prod(N);
@@ -40,7 +38,6 @@ function [ SEQs ] = SCMFinder( N, cores, timing)
         while ~found
             trial = trial + 1;
             if trial==1000000
-                rng shuffle
                 RandStream.setGlobalStream(streams{labindex})
                 trial=0;
             end
